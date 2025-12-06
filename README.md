@@ -32,10 +32,11 @@ Get started in minutes. No coding knowledge required.
     pip install Pillow
     ```
 3.  **Add Your Images**:
-    Create a folder named `input` and drag all your large images into it.
+    Create a folder named `input` in the same directory and drag all your large images into it.
 4.  **Run Compression**:
     -   **Windows**: Double-click the `run_compressor.bat` file.
     -   **Mac/Linux**: Run `python compress_images.py` in your terminal.
+    *(The tool will automatically process images in the `input` folder)*
 5.  **Done!**: Find your optimized, Notion-ready images in the `output` folder.
 
 ## ⚙️ How It Works

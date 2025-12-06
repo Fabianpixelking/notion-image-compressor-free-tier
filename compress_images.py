@@ -85,11 +85,12 @@ def compress_image(file_path, output_path, max_size_mb=4.9):
         scale *= 0.9
 
 def main():
-    input_folder = input("Enter input folder path (default: 'input'): ").strip() or "input"
+    input_folder = "input"
     output_folder = "output"
 
     if not os.path.exists(input_folder):
         print(f"Error: Folder '{input_folder}' does not exist.")
+        print(f"Please create a folder named '{input_folder}' and place your images inside.")
         return
 
     if not os.path.exists(output_folder):
