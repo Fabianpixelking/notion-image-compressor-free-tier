@@ -39,34 +39,52 @@ def compress_image(file_path, output_path, max_size_mb=4.9):
     # If it's a PNG and too big, we might need to resize or convert to JPEG. 
     # Let's try to stick to the original format first, but if it's PNG, we might have to resize.
     
+    # Determine target format
     file_ext = os.path.splitext(file_path)[1].lower()
-    format_mapping = {
-        '.jpg': 'JPEG', '.jpeg': 'JPEG', 
-        '.png': 'PNG', 
-        '.webp': 'WEBP', 
-        '.bmp': 'BMP', 
-        '.tiff': 'TIFF', '.tif': 'TIFF'
-    }
-    img_format = format_mapping.get(file_ext, 'JPEG')
-
-    if img_format == 'PNG':
-        # PNG compression is lossless usually, optimizing it is harder. 
-        # If we really need to hit a target size, resizing is the main lever, or reducing colors (quantization).
-        # For this script, let's try resizing if it's too big.
-        pass
     
-    # Iterative compression
+    # Check for transparency/alpha channel
+    has_alpha = False
+    if img.mode in ('RGBA', 'LA') or (img.mode == 'P' and 'transparency' in img.info):
+        has_alpha = True
+
+    # Default to keeping original format unless it's a lossless one that needs compression
+    # If it's PNG/BMP/TIFF and too big, we prefer converting to JPEG (no alpha) or WEBP (alpha)
+    # to preserve resolution over resizing.
+    if file_ext in ['.png', '.bmp', '.tiff', '.tif']:
+        if has_alpha:
+            img_format = 'WEBP'
+            output_path = os.path.splitext(output_path)[0] + '.webp'
+            print(f"  -> Converting to WEBP to preserve transparency and reduce size...")
+        else:
+            img_format = 'JPEG'
+            output_path = os.path.splitext(output_path)[0] + '.jpg'
+            img = img.convert('RGB') # Ensure RGB for JPEG
+            print(f"  -> Converting to JPEG to preserve resolution...")
+    else:
+        # Keep original format (likely JPEG or WEBP already)
+        format_mapping = {
+            '.jpg': 'JPEG', '.jpeg': 'JPEG', 
+            '.webp': 'WEBP'
+        }
+        img_format = format_mapping.get(file_ext, 'JPEG')
+
+    # Iterative compression (Quality Reduction)
+    # We try to keep resolution and just lower quality first.
+    quality = 95
     min_quality = 10
     
     while quality >= min_quality:
         img.save(output_path, format=img_format, quality=quality, optimize=True)
-        if get_size_mb(output_path) <= max_size_mb:
-            print(f"  -> Done! New size: {get_size_mb(output_path):.2f} MB (Quality: {quality})")
+        current_size = get_size_mb(output_path)
+        
+        if current_size <= max_size_mb:
+            print(f"  -> Done! New size: {current_size:.2f} MB (Quality: {quality}, Format: {img_format})")
             return
+        
         quality -= 5
     
-    # If quality reduction isn't enough, we start resizing
-    print("  -> Quality reduction insufficient, resizing...")
+    # If quality reduction isn't enough, ONLY THEN we start resizing
+    print(f"  -> Quality reduction insufficient (Size: {get_size_mb(output_path):.2f} MB), resizing...")
     scale = 0.9
     while True:
         new_width = int(img.width * scale)
@@ -79,7 +97,7 @@ def compress_image(file_path, output_path, max_size_mb=4.9):
         resized_img.save(output_path, format=img_format, quality=min_quality, optimize=True)
         
         if get_size_mb(output_path) <= max_size_mb:
-            print(f"  -> Done! New size: {get_size_mb(output_path):.2f} MB (Resized to {new_width}x{new_height})")
+            print(f"  -> Done! New size: {get_size_mb(output_path):.2f} MB (Resized to {new_width}x{new_height}, Format: {img_format})")
             return
         
         scale *= 0.9
