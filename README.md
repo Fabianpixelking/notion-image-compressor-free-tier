@@ -7,7 +7,28 @@
 
 **Notion Image Compress for Free Tier** is a powerful Python utility designed to automatically compress and resize your images to fit perfectly within the Notion Free Tier's 5MB file size restriction. Whether you are a student, blogger, or productivity enthusiast, this tool ensures your high-quality visuals make it into your workspace without errors.
 
-## 🚀 Why Use This Tool?
+## ⚡ Quick Start
+
+1.  **Download**: Click **Code** > **Download ZIP** and extract it.
+2.  **Install**: Double-click **`install_dependencies.bat`** (requires [Python](https://www.python.org/downloads/)).
+3.  **Add Images**: Place your images in the **`input`** folder (it's already there!).
+4.  **Run**: Double-click **`run_compressor.bat`**.
+5.  **Done**: Get your optimized images from the **`output`** folder.
+
+---
+
+## 📋 Table of Contents
+
+-   [Features](#-features)
+-   [Installation & Detailed Usage](#-installation--detailed-usage)
+-   [How It Works](#-how-it-works)
+-   [Troubleshooting](#-troubleshooting)
+-   [Contributing](#-contributing)
+-   [License](#-license)
+
+---
+
+## 🚀 Features
 
 -   **Notion 5MB Limit Solver**: Specifically tuned to keep files under 4.9MB.
 -   **Bulk Image Compression**: Process hundreds of photos in seconds.
@@ -16,9 +37,9 @@
 -   **Zero Cost**: Completely free alternative to paid image optimizers.
 -   **Privacy Focused**: Runs locally on your computer—no uploading images to third-party servers.
 
-## 🛠️ Installation & Usage (Beginner Guide)
+## 🛠️ Installation & Detailed Usage
 
-Follow these steps to get started, even if you've never used Python before.
+If the Quick Start wasn't enough, here is the step-by-step guide.
 
 ### 1. Install Python
 1.  Go to the [Python Download Page](https://www.python.org/downloads/).
@@ -38,17 +59,29 @@ Follow these steps to get started, even if you've never used Python before.
 3.  A black window will appear and install the necessary software. Press any key when it says "Press any key to continue...".
 
 ### 4. Compress Your Images
-1.  **Add Images**: Create a folder named `input` inside the tool's folder and put your large images there.
+1.  **Add Images**: Open the **`input`** folder inside the tool's directory. Drag and drop all your large images here.
 2.  **Run Tool**: Double-click **`run_compressor.bat`**.
 3.  **Wait**: The tool will process your images.
-4.  **Done**: Open the `output` folder to find your compressed images!
+4.  **Done**: Open the **`output`** folder to find your compressed images!
 
 ## ⚙️ How It Works
 
 This script uses the advanced **Pillow (PIL)** library to optimize file size:
 1.  **Analysis**: Checks if the image exceeds the 4.9MB threshold.
-2.  **Quality Optimization**: Iteratively reduces JPEG quality (95% -> 10%) to reduce size without visible loss.
-3.  **Smart Resizing**: If quality reduction isn't enough, it incrementally scales down the image dimensions until it fits.
+2.  **Format Conversion**: If the file is a lossless format (PNG, BMP, TIFF), it first tries converting to JPEG (or WEBP) to reduce size while **preserving resolution**.
+3.  **Quality Optimization**: Iteratively reduces quality (95% -> 10%) to reduce size without visible loss.
+4.  **Smart Resizing**: If quality reduction isn't enough, it incrementally scales down the image dimensions until it fits.
+
+## ❓ Troubleshooting
+
+**"Python is not recognized..."**
+-   You likely didn't check **"Add Python to PATH"** during installation. Reinstall Python and make sure to check that box.
+
+**The window closes immediately**
+-   Try running `install_dependencies.bat` first. If that doesn't work, open a command prompt in the folder and run `python compress_images.py` manually to see the error message.
+
+**My PNG became a JPG**
+-   This is intentional! To get under 5MB without shrinking the image dimensions (resolution), we convert lossless formats like PNG to efficient formats like JPEG.
 
 ## 🤝 Contributing
 
