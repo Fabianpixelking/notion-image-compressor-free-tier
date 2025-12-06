@@ -1,9 +1,9 @@
-# Notion Image Compressor for Free Tier (Under 5MB)
+# Notion Image & Video Compressor for Free Tier (Under 5MB)
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.x-blue.svg)
 
-**Bypass Notion's 5MB upload limit** with this free, open-source image compression tool.
+**Bypass Notion's 5MB upload limit** with this free, open-source image and video compression tool.
 
 **Notion Image Compress for Free Tier** is a powerful Python utility designed to automatically compress and resize your images to fit perfectly within the Notion Free Tier's 5MB file size restriction. Whether you are a student, blogger, or productivity enthusiast, this tool ensures your high-quality visuals make it into your workspace without errors.
 
@@ -33,7 +33,7 @@
 -   **Notion 5MB Limit Solver**: Specifically tuned to keep files under 4.9MB.
 -   **Bulk Image Compression**: Process hundreds of photos in seconds.
 -   **Smart Optimization**: Intelligently reduces quality first, then resizes only if necessary to preserve maximum detail.
--   **Multi-Format Support**: Works with **JPG, JPEG, PNG, WEBP, BMP, and TIFF**.
+-   **Multi-Format Support**: Works with **Images (JPG, PNG, WEBP, etc.)** and **Videos (MP4, MOV, AVI, etc.)**.
 -   **Zero Cost**: Completely free alternative to paid image optimizers.
 -   **Privacy Focused**: Runs locally on your computer—no uploading images to third-party servers.
 
