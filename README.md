@@ -16,28 +16,32 @@
 -   **Zero Cost**: Completely free alternative to paid image optimizers.
 -   **Privacy Focused**: Runs locally on your computer—no uploading images to third-party servers.
 
-## 🛠️ Installation & Quick Start
+## 🛠️ Installation & Usage (Beginner Guide)
 
-Get started in minutes. No coding knowledge required.
+Follow these steps to get started, even if you've never used Python before.
 
-### Prerequisites
--   [Python](https://www.python.org/downloads/) (Version 3.6 or higher)
+### 1. Install Python
+1.  Go to the [Python Download Page](https://www.python.org/downloads/).
+2.  Download the latest version for Windows.
+3.  Run the installer. **IMPORTANT**: On the first screen, check the box that says **"Add Python to PATH"**.
+4.  Click "Install Now".
 
-### Step-by-Step Guide
+### 2. Download the Tool
+1.  Scroll to the top of this page.
+2.  Click the green **Code** button.
+3.  Select **Download ZIP**.
+4.  Extract the ZIP file to a folder on your computer (e.g., on your Desktop).
 
-1.  **Download the Tool**: Clone this repository or download the ZIP file.
-2.  **Install Requirements**:
-    Open your terminal/command prompt in the folder and run:
-    ```bash
-    pip install Pillow
-    ```
-3.  **Add Your Images**:
-    Create a folder named `input` in the same directory and drag all your large images into it.
-4.  **Run Compression**:
-    -   **Windows**: Double-click the `run_compressor.bat` file.
-    -   **Mac/Linux**: Run `python compress_images.py` in your terminal.
-    *(The tool will automatically process images in the `input` folder)*
-5.  **Done!**: Find your optimized, Notion-ready images in the `output` folder.
+### 3. Install Dependencies
+1.  Open the folder where you extracted the files.
+2.  Double-click the **`install_dependencies.bat`** file.
+3.  A black window will appear and install the necessary software. Press any key when it says "Press any key to continue...".
+
+### 4. Compress Your Images
+1.  **Add Images**: Create a folder named `input` inside the tool's folder and put your large images there.
+2.  **Run Tool**: Double-click **`run_compressor.bat`**.
+3.  **Wait**: The tool will process your images.
+4.  **Done**: Open the `output` folder to find your compressed images!
 
 ## ⚙️ How It Works
 
