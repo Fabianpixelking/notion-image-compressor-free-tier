@@ -2,6 +2,11 @@ import os
 import math
 import subprocess
 from PIL import Image
+import warnings
+
+# Disable DecompressionBomb warning for large images
+Image.MAX_IMAGE_PIXELS = None
+warnings.simplefilter('ignore', Image.DecompressionBombWarning)
 
 # Try to import imageio_ffmpeg to get the binary path
 try:
@@ -137,6 +142,14 @@ def compress_image(file_path, output_path, max_size_mb=4.9):
             img_format = 'WEBP'
             output_path = os.path.splitext(output_path)[0] + '.webp'
             print(f"  -> Converting to WEBP to preserve transparency...")
+            
+            # WebP has a strict limit of 16383 pixels
+            if img.width > 16383 or img.height > 16383:
+                print(f"  -> Image too large for WEBP ({img.width}x{img.height}). Resizing to fit limit...")
+                scale = 16383 / max(img.width, img.height)
+                new_width = int(img.width * scale)
+                new_height = int(img.height * scale)
+                img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
         else:
             img_format = 'JPEG'
             output_path = os.path.splitext(output_path)[0] + '.jpg'
