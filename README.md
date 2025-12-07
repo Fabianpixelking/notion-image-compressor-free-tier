@@ -10,11 +10,11 @@
 ## ⚡ Quick Start
 
 1.  **Download**: Click **Code** > **Download ZIP** and extract it.
-2.  **Install**: Double-click **`install_dependencies.bat`** (requires [Python](https://www.python.org/downloads/)).
-3.  **Add Images**: Place your images in the **`input`** folder (it's already there!).
-4.  **Run**: Double-click **`run_compressor.bat`**.
+2.  **Install**: Double-click **`Setup.bat`** to create the shortcuts and icons.
+3.  **Add Images**: Place your images in the **`input`** folder.
+4.  **Run**: Double-click **`Start Compressor`**.
 5.  **Done**: Get your optimized images from the **`output`** folder.
-6.  **Cleanup**: Double-click **`clear_folders.bat`** to empty the folders for next time.
+6.  **Cleanup**: Double-click **`Reset & Clear`** to empty the folders for next time.
 
 ---
 
@@ -54,15 +54,10 @@ If the Quick Start wasn't enough, here is the step-by-step guide.
 3.  Select **Download ZIP**.
 4.  Extract the ZIP file to a folder on your computer (e.g., on your Desktop).
 
-### 3. Install Dependencies
-1.  Open the folder where you extracted the files.
-2.  Double-click the **`install_dependencies.bat`** file.
-3.  A black window will appear and install the necessary software. Press any key when it says "Press any key to continue...".
-
-### 4. Compress Your Images
+### 3. Compress Your Images
 1.  **Add Images**: Open the **`input`** folder inside the tool's directory. Drag and drop all your large images here.
-2.  **Run Tool**: Double-click **`run_compressor.bat`**.
-3.  **Wait**: The tool will process your images.
+2.  **Run Tool**: Double-click **`Start Compressor`**.
+3.  **Wait**: The tool will process your images (first time might take a moment to set up).
 4.  **Done**: Open the **`output`** folder to find your compressed images!
 
 ## ⚙️ How It Works
