@@ -14,6 +14,7 @@
 3.  **Add Images**: Place your images in the **`input`** folder (it's already there!).
 4.  **Run**: Double-click **`run_compressor.bat`**.
 5.  **Done**: Get your optimized images from the **`output`** folder.
+6.  **Cleanup**: Double-click **`clear_folders.bat`** to empty the folders for next time.
 
 ---
 
