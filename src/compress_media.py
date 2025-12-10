@@ -191,8 +191,13 @@ def compress_image(file_path, output_path, max_size_mb=4.9):
         scale *= 0.9
 
 def main():
-    input_folder = "input"
-    output_folder = "output"
+    # Determine paths relative to this script file
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # Assuming script is in src/ and input/output are in the parent (root) folder
+    project_root = os.path.dirname(script_dir)
+    
+    input_folder = os.path.join(project_root, "input")
+    output_folder = os.path.join(project_root, "output")
 
     if not os.path.exists(input_folder):
         print(f"Error: Folder '{input_folder}' does not exist.")
